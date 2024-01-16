@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utacrypt&#9760;</title>
+  <style>    
+    body {
+  text-align: center;
+}
+
+form {
+  display: inline-block;
+  text-align: left;
+  margin: 20px; /* Espacio entre los formularios */
+}
+
+textarea {
+
+      height: 100px; 
+    }
+input[type="text"], textarea {
+  width: 700px; /* Ajusta el ancho según tus preferencias */
+}
+
+/* Estilos para los elementos block dentro de los formularios */
+label, input, textarea, button {
+  display: block;
+  margin-bottom: 10px;
+}
+
+  </style>
+
+  <h1>UTACRYPT &#9760;</h1>
+  <h2>AES-128-CBC &#128273</h2>
+</head>
+<body>
+  <form action="/encrypt" method="post">
+    <label for="key">Key:</label>
+    <input type="text" name="key" required value="<%= key || '' %>">
+    
+    <label for="iv">IV:</label>
+    <input type="text" name="iv" required value="<%= iv || '' %>">
+    
+    <label for="Texto">Texto:</label>
+    <input type="text" name="plainText" required value="<%= text || '' %>">
+    
+    <label for="encryptedText">Texto encriptado:</label>
+    <textarea name="encryptedText" readonly><%= encryptedText || '' %></textarea>
+
+    <button type="submit">Codificar</button>
+  </form>
+
+  <form action="/decrypt" method="post">
+    <label for="keyD">Key:</label>
+    <input type="text" name="keyD" required value="<%= keyD || '' %>">
+    
+    <label for="ivD">IV:</label>
+    <input type="text" name="ivD" required value="<%= ivD || '' %>">
+    
+    <label for="encrypted">Texto encriptado:</label>
+    <input type="text" name="encrypted" required value="<%= encrypted || '' %>">
+    
+    <label for="decryptedText">Texto desencriptado:</label>
+    <textarea name="decryptedText" readonly><%= decryptedText || '' %></textarea>
+
+    <button type="submit">Decodificar</button>
+  </form>
+</body>
+</html>
